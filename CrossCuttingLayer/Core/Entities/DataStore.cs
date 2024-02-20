@@ -1,4 +1,4 @@
-﻿using CrossCuttingLayer.Core.Entities;
+﻿using CrossCuttingLayer.Entities;
 
 namespace CrossCuttingLayer.Entities
 {
@@ -15,7 +15,12 @@ namespace CrossCuttingLayer.Entities
                 new Product { Id = 2, Name = "Test Product 2" },
                 new Product { Id = 3, Name = "Test Product 3" }
             };
-            _orders = new List<Order>();
+            _orders = new List<Order>
+            {
+                new Order { Id = 1, ProductId = 1 },
+                new Order { Id = 2, ProductId = 2 },
+                new Order { Id = 3, ProductId = 3 }
+            };
         }
         public async Task AddProduct(Product product)
         {
@@ -33,6 +38,7 @@ namespace CrossCuttingLayer.Entities
             _products.Single(p => p.Id == product.Id).Name = $"{product.Name} evt: {evt}";
             await Task.CompletedTask;
         }
+        public async Task<IEnumerable<Order>> GetAllOrders() => await Task.FromResult(_orders);
         public async Task AddOrder(Order order)
         {
             _orders.Add(order);

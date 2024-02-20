@@ -33,6 +33,22 @@ builder.Services.AddMassTransit(x =>
             {
                 e.RoutingKey = "private.*";
                 e.ExchangeType = ExchangeType.Topic;
+                e.Durable = true;
+                e.AutoDelete = false;
+            });
+            ep.Bind("product-Queue-Direct", e =>
+            {
+                e.RoutingKey = "private.*";
+                e.ExchangeType = ExchangeType.Direct;
+                e.Durable = true;
+                e.AutoDelete = false;
+            });
+            ep.Bind("product-Queue-Headers", e =>
+            {
+                e.RoutingKey = "private.*";
+                e.ExchangeType = ExchangeType.Headers;
+                e.Durable = true;
+                e.AutoDelete = false;
             });
         });
     }));

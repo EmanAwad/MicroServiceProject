@@ -2,13 +2,14 @@
 using CrossCuttingLayer.Entities;
 using MassTransit;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ConsumerService.Controllers
 {
-    public class ConsumerController : IConsumer<Product>
+    public class OrderConsumerController : IConsumer<Product>
     {
         private readonly IMediator _mediator;
-        public ConsumerController(IMediator mediator)
+        public OrderConsumerController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -24,5 +25,3 @@ namespace ConsumerService.Controllers
         }
     }
 }
-
-

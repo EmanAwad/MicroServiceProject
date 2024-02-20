@@ -9,10 +9,12 @@ namespace CQRSTraining.Handlers
     {
         private readonly DataStore _dataStore;
         private readonly IPublishEndpoint _publishEndpoint;
-        public AddProductHandler(DataStore dataStore, IPublishEndpoint publishEndpoint)
+        private readonly IBus _bus;
+        public AddProductHandler(DataStore dataStore, IPublishEndpoint publishEndpoint,IBus bus)
         {
             _dataStore = dataStore;
             _publishEndpoint = publishEndpoint;
+            _bus = bus;
         }
         public async Task<Product> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
@@ -22,6 +24,7 @@ namespace CQRSTraining.Handlers
                 request.Product.Id,
                 request.Product.Name,
             }, cancellationToken);
+            //await _bus.Send(request.Product,cancellationToken);
             return request.Product;
         }
     }
