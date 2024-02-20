@@ -13,32 +13,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 builder.Services.AddSingleton<DataStore>();
-//builder.Services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
-//builder.Services.AddMassTransit(busConfigurator =>
-//{
-//    busConfigurator.SetKebabCaseEndpointNameFormatter();
-//    busConfigurator.AddConsumer<ConsumerController>();
-//    busConfigurator.UsingRabbitMq((context, Configurator) =>
-//    {
-//        Configurator.Host(new Uri(RabbitMqConsts.RabbitMqRootUri), h =>
-//        {
-//            h.Username(RabbitMqConsts.UserName);
-//            h.Password(RabbitMqConsts.Password);
-//        });
-
-//        Configurator.ReceiveEndpoint("product-Queue", ep =>
-//        {
-//            ep.PrefetchCount = 16;
-//            ep.UseMessageRetry(r => r.Interval(2, 100));
-//            ep.Bind("send-report", e =>
-//            {
-//                e.RoutingKey = "private.*";
-//                e.ExchangeType = ExchangeType.Topic;
-//            });
-//        });
-//        Configurator.ConfigureEndpoints(context);
-//    });
-//});
 // Assuming this code is within a ConfigureServices method of your Startup.cs or similar
 builder.Services.AddMassTransit(x =>
 {
