@@ -1,4 +1,5 @@
 using CQRSTraining.Behaviors;
+using CQRSTraining.RedisCashe;
 using CrossCuttingLayer.Core;
 using CrossCuttingLayer.Entities;
 using MassTransit;
@@ -10,7 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMediatR(cfg=>cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 builder.Services.AddSingleton<DataStore>();
 builder.Services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+builder.Services.AddScoped<ICacheService, CacheService>();
 builder.Services.AddControllers();
+builder.Services.AddMemoryCache();
 builder.Services.AddMassTransit(busConfigurator =>
 {
     busConfigurator.SetKebabCaseEndpointNameFormatter();
