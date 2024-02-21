@@ -1,7 +1,7 @@
 using ProductService.Behaviors;
 using ProductService.RedisCashe;
-using CrossCuttingLayer.Core;
-using CrossCuttingLayer.Entities;
+using CoreLayer.Core;
+using CoreLayer.Entities;
 using MassTransit;
 using MediatR;
 

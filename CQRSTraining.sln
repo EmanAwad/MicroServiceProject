@@ -5,9 +5,9 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "CQRSTraining\ProductService.csproj", "{1A313C2A-7F45-4F9D-8549-3371CE7B510B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockService", "ConsumerService\StockService.csproj", "{8DBF983E-68A8-435A-A9CA-195D34EBE7E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "ConsumerService\OrderService.csproj", "{8DBF983E-68A8-435A-A9CA-195D34EBE7E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrossCuttingLayer", "CrossCuttingLayer\CrossCuttingLayer.csproj", "{416ABDB0-4AED-4795-A59E-CCB76ED54A29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CrossCuttingLayer\CoreLayer.csproj", "{416ABDB0-4AED-4795-A59E-CCB76ED54A29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

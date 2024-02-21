@@ -1,5 +1,5 @@
 ﻿using ProductService.Commands;
-using CrossCuttingLayer.Entities;
+using CoreLayer.Entities;
 using MassTransit;
 using MediatR;
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrossCuttingLayer.Entities
+namespace CoreLayer.Entities
 {
     public class Order
     {

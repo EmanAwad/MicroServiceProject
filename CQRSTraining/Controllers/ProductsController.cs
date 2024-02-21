@@ -2,8 +2,8 @@
 using ProductService.Notifications;
 using ProductService.Queries;
 using ProductService.RedisCashe;
-using CrossCuttingLayer.Core;
-using CrossCuttingLayer.Entities;
+using CoreLayer.Core;
+using CoreLayer.Entities;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

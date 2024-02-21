@@ -1,8 +1,8 @@
 ﻿
-using CrossCuttingLayer.Entities;
+using CoreLayer.Entities;
 using MediatR;
 
-namespace StockService.Commands
+namespace OrderService.Commands
 {
     public record GetOrdersQuery(Order Order) : IRequest<Order>;
 }

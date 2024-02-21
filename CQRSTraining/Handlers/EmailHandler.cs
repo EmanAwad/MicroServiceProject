@@ -1,5 +1,5 @@
 ﻿using ProductService.Notifications;
-using CrossCuttingLayer.Entities;
+using CoreLayer.Entities;
 using MediatR;
 
 namespace ProductService.Handlers

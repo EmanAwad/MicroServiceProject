@@ -1,4 +1,4 @@
-﻿namespace CrossCuttingLayer.Core
+﻿namespace CoreLayer.Core
 {
     public class RabbitMqConsts
     {

@@ -1,5 +1,5 @@
 ﻿
-using CrossCuttingLayer.Entities;
+using CoreLayer.Entities;
 using MediatR;
 
 namespace ProductService.Commands

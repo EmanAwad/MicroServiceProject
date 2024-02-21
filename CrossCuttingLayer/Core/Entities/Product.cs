@@ -1,4 +1,4 @@
-﻿namespace CrossCuttingLayer.Entities
+﻿namespace CoreLayer.Entities
 {
     public class Product
     {
