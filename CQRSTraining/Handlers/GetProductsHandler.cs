@@ -1,9 +1,9 @@
 ﻿
-using CQRSTraining.Queries;
+using ProductService.Queries;
 using CrossCuttingLayer.Entities;
 using MediatR;
 
-namespace CQRSTraining.Handlers
+namespace ProductService.Handlers
 {
     public class GetProductsHandler : IRequestHandler<GetProductsQuery, IEnumerable<Product>>
     {

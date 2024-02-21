@@ -1,9 +1,9 @@
-﻿using ConsumerService.Commands;
+﻿using StockService.Commands;
 using CrossCuttingLayer.Entities;
 using MassTransit;
 using MediatR;
 
-namespace ConsumerService.Controllers
+namespace StockService.Controllers
 {
     public class ConsumerController : IConsumer<Product>
     {

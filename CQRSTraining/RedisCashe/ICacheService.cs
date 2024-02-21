@@ -1,4 +1,4 @@
-﻿namespace CQRSTraining.RedisCashe
+﻿namespace ProductService.RedisCashe
 {
     public interface ICacheService
     {

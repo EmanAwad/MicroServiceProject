@@ -1,9 +1,9 @@
-﻿using CQRSTraining.Commands;
+﻿using ProductService.Commands;
 using CrossCuttingLayer.Entities;
 using MassTransit;
 using MediatR;
 
-namespace CQRSTraining.Handlers
+namespace ProductService.Handlers
 {
     public class AddProductHandler : IRequestHandler<AddProductCommand, Product>
     {

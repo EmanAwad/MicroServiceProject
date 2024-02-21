@@ -1,4 +1,4 @@
-﻿namespace CQRSTraining
+﻿namespace ProductService
 {
     static class ConfigurationManager
     {

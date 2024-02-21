@@ -1,8 +1,8 @@
-﻿using ConsumerService.Queries;
+﻿using StockService.Queries;
 using CrossCuttingLayer.Entities;
 using MediatR;
 
-namespace ConsumerService.Handlers
+namespace StockService.Handlers
 {
     public class GetOrdersHandler : IRequestHandler<GetOrdersQuery, IEnumerable<Order>>
     {

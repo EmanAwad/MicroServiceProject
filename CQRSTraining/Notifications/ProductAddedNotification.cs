@@ -1,7 +1,7 @@
 ﻿using CrossCuttingLayer.Entities;
 using MediatR;
 
-namespace CQRSTraining.Notifications
+namespace ProductService.Notifications
 {
     public record ProductAddedNotification(Product Product) : INotification;
 }

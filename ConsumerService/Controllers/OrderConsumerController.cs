@@ -1,10 +1,10 @@
-﻿using ConsumerService.Commands;
+﻿using StockService.Commands;
 using CrossCuttingLayer.Entities;
 using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ConsumerService.Controllers
+namespace StockService.Controllers
 {
     public class OrderConsumerController : IConsumer<Product>
     {

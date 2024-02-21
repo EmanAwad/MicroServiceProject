@@ -1,7 +1,7 @@
 ﻿using CrossCuttingLayer.Entities;
 using MediatR;
 
-namespace CQRSTraining.Queries
+namespace ProductService.Queries
 {
     public record GetProductsQuery() : IRequest<IEnumerable<Product>>;
 }

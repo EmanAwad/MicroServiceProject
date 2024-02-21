@@ -1,7 +1,7 @@
-﻿using CQRSTraining.Commands;
-using CQRSTraining.Notifications;
-using CQRSTraining.Queries;
-using CQRSTraining.RedisCashe;
+﻿using ProductService.Commands;
+using ProductService.Notifications;
+using ProductService.Queries;
+using ProductService.RedisCashe;
 using CrossCuttingLayer.Core;
 using CrossCuttingLayer.Entities;
 using MassTransit;
@@ -11,7 +11,7 @@ using Microsoft.Extensions.Caching.Memory;
 using StackExchange.Redis;
 using System;
 
-namespace CQRSTraining.Controllers
+namespace ProductService.Controllers
 {
     [Route("api/products")]
     [ApiController]

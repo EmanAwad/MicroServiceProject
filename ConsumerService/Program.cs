@@ -1,5 +1,5 @@
-using ConsumerService;
-using ConsumerService.Controllers;
+using StockService;
+using StockService.Controllers;
 using CrossCuttingLayer.Core;
 using CrossCuttingLayer.Entities;
 using MassTransit;

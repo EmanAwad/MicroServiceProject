@@ -1,8 +1,8 @@
-﻿using CQRSTraining.Notifications;
+﻿using ProductService.Notifications;
 using CrossCuttingLayer.Entities;
 using MediatR;
 
-namespace CQRSTraining.Handlers
+namespace ProductService.Handlers
 {
     public class CacheInvalidationHandler : INotificationHandler<ProductAddedNotification>
     {

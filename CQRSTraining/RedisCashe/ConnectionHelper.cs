@@ -1,7 +1,7 @@
 ﻿using StackExchange.Redis;
 using System;
 
-namespace CQRSTraining.RedisCashe
+namespace ProductService.RedisCashe
 {
     public class ConnectionHelper
     {

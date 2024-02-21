@@ -1,10 +1,10 @@
 ﻿
-using ConsumerService.Commands;
+using StockService.Commands;
 using CrossCuttingLayer.Entities;
 using MassTransit;
 using MediatR;
 
-namespace ConsumerService.Handlers
+namespace StockService.Handlers
 {
     public class AddOrderHandler : IRequestHandler<GetOrdersQuery, Order>
     {

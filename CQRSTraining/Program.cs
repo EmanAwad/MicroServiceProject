@@ -1,5 +1,5 @@
-using CQRSTraining.Behaviors;
-using CQRSTraining.RedisCashe;
+using ProductService.Behaviors;
+using ProductService.RedisCashe;
 using CrossCuttingLayer.Core;
 using CrossCuttingLayer.Entities;
 using MassTransit;
