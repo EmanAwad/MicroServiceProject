@@ -1,22 +1,23 @@
-using OrderService;
-using OrderService.Controllers;
 using CoreLayer.Core;
 using CoreLayer.Entities;
 using MassTransit;
-using MediatR;
-using RabbitMQ.Client;
+using MassTransit.Transports.Fabric;
+using StockService.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 builder.Services.AddSingleton<DataStore>();
-// Assuming this code is within a ConfigureServices method of your Startup.cs or similar
+
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumer<OrderConsumerController>();
+    x.AddConsumer<StockController>();
     x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
     {
         cfg.Host(new Uri(RabbitMqConsts.RabbitMqRootUri), h =>
@@ -24,12 +25,12 @@ builder.Services.AddMassTransit(x =>
             h.Username(RabbitMqConsts.UserName);
             h.Password(RabbitMqConsts.Password);
         });
-        cfg.ReceiveEndpoint("product-Queue", ep =>
+        cfg.ReceiveEndpoint("product-Queue-Topic", ep =>
         {
-            
+            ep.ExchangeType = ExchangeType.Topic.ToString();
             ep.PrefetchCount = 16;
             ep.UseMessageRetry(r => r.Interval(2, 100));
-            ep.ConfigureConsumer<OrderConsumerController>(provider);
+            ep.ConfigureConsumer<StockController>(provider);
             //ep.Bind("product-Queue-Topic", e =>
             //{
             //    e.RoutingKey = "private.*";
@@ -54,11 +55,7 @@ builder.Services.AddMassTransit(x =>
         });
     }));
 });
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "ConsumerSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CrossCuttingLayer\CoreLayer.csproj", "{416ABDB0-4AED-4795-A59E-CCB76ED54A29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockService", "StockService\StockService.csproj", "{F7796827-B614-44D4-8BDC-B839A664ADFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{416ABDB0-4AED-4795-A59E-CCB76ED54A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{416ABDB0-4AED-4795-A59E-CCB76ED54A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{416ABDB0-4AED-4795-A59E-CCB76ED54A29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7796827-B614-44D4-8BDC-B839A664ADFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7796827-B614-44D4-8BDC-B839A664ADFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7796827-B614-44D4-8BDC-B839A664ADFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7796827-B614-44D4-8BDC-B839A664ADFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
