@@ -29,29 +29,29 @@ builder.Services.AddMassTransit(x =>
             ep.PrefetchCount = 16;
             ep.UseMessageRetry(r => r.Interval(2, 100));
             ep.ConfigureConsumer<ConsumerController>(provider);
-    //        ep.Bind("product-Queue-Topic", e =>
-    //        {
-    //            e.RoutingKey = "private.*";
-    //            e.ExchangeType = ExchangeType.Topic;
-    //            e.Durable = true;
-    //            e.AutoDelete = false;
-    //        });
-    //        ep.Bind("product-Queue-Direct", e =>
-    //        {
-    //            e.RoutingKey = "private.*";
-    //            e.ExchangeType = ExchangeType.Direct;
-    //            e.Durable = true;
-    //            e.AutoDelete = false;
-    //        });
-    //        ep.Bind("product-Queue-Headers", e =>
-    //        {
-    //            e.RoutingKey = "private.*";
-    //            e.ExchangeType = ExchangeType.Headers;
-    //            e.Durable = true;
-    //            e.AutoDelete = false;
-    //        });
-    //    });
-    //}));
+            //ep.Bind("product-Queue-Topic", e =>
+            //{
+            //    e.RoutingKey = "private.*";
+            //    e.ExchangeType = ExchangeType.Topic;
+            //    e.Durable = true;
+            //    e.AutoDelete = false;
+            //});
+            //ep.Bind("product-Queue-Direct", e =>
+            //{
+            //    e.RoutingKey = "private.*";
+            //    e.ExchangeType = ExchangeType.Direct;
+            //    e.Durable = true;
+            //    e.AutoDelete = false;
+            //});
+            //ep.Bind("product-Queue-Headers", e =>
+            //{
+            //    e.RoutingKey = "private.*";
+            //    e.ExchangeType = ExchangeType.Headers;
+            //    e.Durable = true;
+            //    e.AutoDelete = false;
+            //});
+        });
+    }));
 });
 // Obtain an instance of IBusControl
 var busControl = builder.Services.BuildServiceProvider().GetService<IBusControl>();
