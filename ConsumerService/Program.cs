@@ -14,46 +14,63 @@ builder.Services.AddControllers();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
 builder.Services.AddSingleton<DataStore>();
 // Assuming this code is within a ConfigureServices method of your Startup.cs or similar
-builder.Services.AddMassTransit(x =>
+//builder.Services.AddMassTransit(x =>
+//{
+//    x.AddConsumer<OrderConsumerController>();
+//    x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
+//    {
+//        cfg.Host(new Uri(RabbitMqConsts.RabbitMqRootUri), h =>
+//        {
+//            h.Username(RabbitMqConsts.UserName);
+//            h.Password(RabbitMqConsts.Password);
+//        });
+//        cfg.ReceiveEndpoint("product-Queue", ep =>
+//        {
+
+//            ep.PrefetchCount = 16;
+//            ep.UseMessageRetry(r => r.Interval(2, 100));
+//            ep.ConfigureConsumer<OrderConsumerController>(provider);
+//            //ep.Bind("product-Queue-Topic", e =>
+//            //{
+//            //    e.RoutingKey = "private.*";
+//            //    e.ExchangeType = ExchangeType.Topic;
+//            //    e.Durable = true;
+//            //    e.AutoDelete = false;
+//            //});
+//            //ep.Bind("product-Queue-Direct", e =>
+//            //{
+//            //    e.RoutingKey = "private.*";
+//            //    e.ExchangeType = ExchangeType.Direct;
+//            //    e.Durable = true;
+//            //    e.AutoDelete = false;
+//            //});
+//            //ep.Bind("product-Queue-Headers", e =>
+//            //{
+//            //    e.RoutingKey = "private.*";
+//            //    e.ExchangeType = ExchangeType.Headers;
+//            //    e.Durable = true;
+//            //    e.AutoDelete = false;
+//            //});
+//        });
+//    }));
+//});
+builder.Services.AddMassTransit(busConfigurator =>
 {
-    x.AddConsumer<OrderConsumerController>();
-    x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
+    busConfigurator.SetKebabCaseEndpointNameFormatter();
+    busConfigurator.AddConsumer<OrderConsumerController>();
+    busConfigurator.UsingRabbitMq((context, Configurator) =>
     {
-        cfg.Host(new Uri(RabbitMqConsts.RabbitMqRootUri), h =>
+        Configurator.Host(new Uri(RabbitMqConsts.RabbitMqRootUri), h =>
         {
             h.Username(RabbitMqConsts.UserName);
             h.Password(RabbitMqConsts.Password);
         });
-        cfg.ReceiveEndpoint("product-Queue", ep =>
-        {
-            
-            ep.PrefetchCount = 16;
-            ep.UseMessageRetry(r => r.Interval(2, 100));
-            ep.ConfigureConsumer<OrderConsumerController>(provider);
-            //ep.Bind("product-Queue-Topic", e =>
-            //{
-            //    e.RoutingKey = "private.*";
-            //    e.ExchangeType = ExchangeType.Topic;
-            //    e.Durable = true;
-            //    e.AutoDelete = false;
-            //});
-            //ep.Bind("product-Queue-Direct", e =>
-            //{
-            //    e.RoutingKey = "private.*";
-            //    e.ExchangeType = ExchangeType.Direct;
-            //    e.Durable = true;
-            //    e.AutoDelete = false;
-            //});
-            //ep.Bind("product-Queue-Headers", e =>
-            //{
-            //    e.RoutingKey = "private.*";
-            //    e.ExchangeType = ExchangeType.Headers;
-            //    e.Durable = true;
-            //    e.AutoDelete = false;
-            //});
-        });
-    }));
+
+        Configurator.ReceiveEndpoint("product-Queue", re => {});
+        Configurator.ConfigureEndpoints(context);
+    });
 });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

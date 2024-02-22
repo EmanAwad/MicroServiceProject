@@ -1,4 +1,5 @@
-﻿using CoreLayer.Entities;
+﻿using CoreLayer.Core.Entities;
+using CoreLayer.Entities;
 
 namespace CoreLayer.Entities
 {
@@ -6,6 +7,7 @@ namespace CoreLayer.Entities
     {
         private static List<Product> _products;
         private static List<Order> _orders;
+        private static List<Stock> _stocks;
 
         public DataStore()
         {
@@ -20,6 +22,12 @@ namespace CoreLayer.Entities
                 new Order { Id = 1, ProductId = 1 },
                 new Order { Id = 2, ProductId = 2 },
                 new Order { Id = 3, ProductId = 3 }
+            };
+            _stocks = new List<Stock>
+            {
+                new Stock { Id = 1, ProductId = 1 ,NumOfProduct =5, },
+                new Stock { Id = 2, ProductId = 2 ,NumOfProduct =5,},
+                new Stock { Id = 3, ProductId = 3 ,NumOfProduct =5,}
             };
         }
         public async Task AddProduct(Product product)
@@ -42,6 +50,12 @@ namespace CoreLayer.Entities
         public async Task AddOrder(Order order)
         {
             _orders.Add(order);
+            await Task.CompletedTask;
+        }
+        public async Task StockEventOccured(Stock stock, string evt)
+        {
+            var obj = _stocks.Single(p => p.ProductId == stock.Id);
+            stock.NumOfProduct = stock.NumOfProduct + 1;    
             await Task.CompletedTask;
         }
     }
